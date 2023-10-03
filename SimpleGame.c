@@ -9,7 +9,7 @@ int main()
 	attempts = 0;
 	srand(time(NULL));
 	k = rand()%1000;
-	printf("Hello! This is a simple game. You need to guess a number from 1 to 100.\n");
+	printf("Hello! This is a simple game. You need to guess a number from 1 to 1000.\n");
 	while (n != k)
 		{
 		printf("Enter your number - ");
