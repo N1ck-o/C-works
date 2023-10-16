@@ -6,7 +6,7 @@
 int main()
 {
 	int* array;
-	int x, _min, a, b, length;
+	int length, min1, min2, min1_pos, count, min2_pos, i;
 	printf("Enter length of array - ");
 	scanf_s("%d", &length);
 	array = (int*)malloc(length * sizeof(int));
@@ -15,22 +15,30 @@ int main()
 		printf("Enter the %d element of the array: ", current);
 		scanf_s("%d", &array[current]);
 	}
-	printf("Enter some number = ");
-	scanf_s("%d", &x);
-	_min = 1e9;
-	for (int i = 0; i < length; i++)
+	min1 = array[0];
+	min1_pos = min2_pos = 0;
+	for (i = 0; i < length; i++)
 	{
-		for (int j = i+1; j < length; j++)
+		if (array[i] < min1)
 		{
-			if (abs(x - array[i] - array[j]) < _min)
-			{
-				_min = abs(x - array[i] - array[j]);
-				a = array[i];
-				b = array[j];
-			}
+			min1 = array[i];
+			min1_pos = i;
+		}
+		if (array[i] == min1)
+		{
+			min2 = min1;
+			min2_pos = i;
 		}
 	}
-	printf("a = %d\n", a);
-	printf("b = %d", b);
+	if (min1_pos == min2_pos)
+	{
+		printf("Second minimum element not found");
+	}
+	if (min1_pos != min2_pos)
+	{
+		count = min2_pos - min1_pos - 1;
+		printf("Count of elements between minimum values: %d", count);
+	}
+
 	return 0;
 }
